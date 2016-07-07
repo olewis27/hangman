@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hangman</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=3d | 3d-float">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rancho&effect=neon | font-effect-neon">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+</head>
+
+<body>
+    <div id="heading" class="font-effect-3d">
+        <h1>Hangman</h1>
+        <br>
+    </div>
+    <div class="font-effect-neon" style="text-align:center">
+        <h2>00's hip hop style</h2></div>
+    <input name="Answer" type="text" size="5" maxlength="1">
+    <input type="button" name="button" class="btn btn-primary btn-sm" value="Guess" onclick="1">
+    <p id="Wrong input">Wrong Letter:</p>
+    
+    
+    <div class="alphabet" style="width:800px;">
+        <br>
+        <div class="first-row">
+            <button type="button" class="btn btn-primary btn-lg">Q</button>
+            <button type="button" class="btn btn-primary btn-lg">W</button>
+            <button type="button" class="btn btn-primary btn-lg">E</button>
+            <button type="button" class="btn btn-primary btn-lg">R</button>
+            <button type="button" class="btn btn-primary btn-lg">T</button>
+            <button type="button" class="btn btn-primary btn-lg">Y</button>
+            <button type="button" class="btn btn-primary btn-lg">U</button>
+            <button type="button" class="btn btn-primary btn-lg">I</button>
+            <button type="button" class="btn btn-primary btn-lg">O</button>
+            <button type="button" class="btn btn-primary btn-lg">P</button>
+        </div>
+        <div class="second-row" style="padding-left:40px;">
+            <button type="button" class="btn btn-primary btn-lg">A</button>
+            <button type="button" class="btn btn-primary btn-lg">S</button>
+            <button type="button" class="btn btn-primary btn-lg">D</button>
+            <button type="button" class="btn btn-primary btn-lg">F</button>
+            <button type="button" class="btn btn-primary btn-lg">G</button>
+            <button type="button" class="btn btn-primary btn-lg">H</button>
+            <button type="button" class="btn btn-primary btn-lg">J</button>
+            <button type="button" class="btn btn-primary btn-lg">K</button>
+            <button type="button" class="btn btn-primary btn-lg">L</button>
+        </div>
+        <div class="third-row" style="padding-left:100px;">
+            <button type="button" class="btn btn-primary btn-lg">Z</button>
+            <button type="button" class="btn btn-primary btn-lg">X</button>
+            <button type="button" class="btn btn-primary btn-lg">C</button>
+            <button type="button" class="btn btn-primary btn-lg">V</button>
+            <button type="button" class="btn btn-primary btn-lg">B</button>
+            <button type="button" class="btn btn-primary btn-lg">N</button>
+            <button type="button" class="btn btn-primary btn-lg">M</button>
+        </div>
+    </div>
+    <script src="assets/game.js" type="text/javascript">
+    </script>
+</body>
+
+</html>
