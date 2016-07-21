@@ -1,59 +1,111 @@
 window.onload = function () {
 
-
+//Array of Song Options
 var songs = ['ridin','tipsy','lollipop','whoa','dilemma'];
-var guess = [];
-var lives = 10;
+var chosenSong = "";
+var letersInChosenSong = [];
+var numBlanks = 0;
+var guesses = [];
+var wrongGuesses = [];
+
+//Game Counters
+var winCounter =0;
+var lossCounter =0;
+var lives =10;
 
 
+// Start Game Button
+// ================================================================
+function startGame() {
+		lives = 10;
 
+    chosenSong = songs[Math.floor(Math.random() * songs.length)];
+    lettersInChosenSong = chosenSong.split("");
 
+    numBlanks = lettersInChosenSong.length;
 
-    
-document.onkeyup = function(n) {
-	var keyup = String.fromCharCode(n.keyCode).toLowerCase(); 
-	console.log(keyup);
-	startGame();
+    console.log("chosenSong");
+
+    guesses = [];
+    wrongGuesses = [];
+
+    for (var i=0; i < numBlanks; i++){
+    guesses.push("_");
+    }
+    console.log("guesses");
+
+    document.getElementById("guessesleft").innerHTML = lives;
+    document.getElementById("wordblank").innerHTML = guesses.join (" ");
+    document.getElementById("wrongGuesses").innerHTML = wrongGuesses.join (" ");
+    }
+
+    //ChecksLetter() function
+    function checkLetters(letter){
+
+      var letterInWord = false;
+
+      for (var i = 0; i < numBlanks.length; i++) {
+        if (chosenSong[i] ==letter) {
+          letterInWord = true;
+        }
+      }
+
+      if(letterInWord) {
+        for (var i=0; i<numBlanks; i++){
+
+          if(chosenSong[i] ==letter); {
+            guesses[i] = letter;
+          }
+        
+        }
+        console.log("guesses");
+      }
+
+        else {
+          wrongGuesses.push(letter);
+          lives--;
+        }
+    }
+
+//  StartRound & Complete
+//  ======================================================
+
+    function roundComplete(){
+
+      console.log("WinCount: " + winCounter + " | LossCount: " + lossCounter + " | NumGuesses: " + numGuesses);
+      
+      document.getElementById("guessesLeft").innerHTML= lives;
+      document.getElementById("wordblanks").innerHTML = guesses.join(" "); 
+      document.getElementById("wrongGuesses").innerHTML = wrongGuesses.join(" "); 
+
+      if (lettersInChosenSong.toString() == guesses.toString()) {
+    winCounter++;
+    alert("You win!");
+
+    document.getElementById("winCounter").innerHTML= winCounter;
+    startGame();
+
+    }
+
+    else if(lives == 0) {
+    lossCounter++;   
+    alert("You lose");
+
+    document.getElementById("lossCounter").innerHTML= lossCounter;
+    startGame();
+	}
 }
 
-var startGame = function() {
-		var chosenSong = songs[Math.floor(Math.random() * songs.length)];
-	console.log(chosenSong);
-	}
+// Start Game Action
+// ===========================================================================
+startGame();
 
+document.onkeyup = function(event) {
+  letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
 
-// Get elements
-  var showLives = document.getElementById("mylives");
+  checkLetters(letterGuessed);
+  roundComplete();
 
-
-  // Select Songs
-  var selectsong = function () {
-    if (chosenSong === songs[0]) {
-      songName.innerHTML = "ridin";
-    } else if (chosenSong === songs[1]) {
-      songName.innerHTML = "tipsy";
-    } else if (chosenSong === songs[2]) {
-      songName.innerHTML = "lollipop";
-    } else if (chosenSong === songs [3]) {
-    	songName.innerHTML = "whoa";
-    } else if (chosenSong === songs [4]) {
-    	songName.innerHTML = "dilemma";
-    }
-  }
-
-  var songSpacing = function() {
-  	song == chosenSong.length;
-  	for (var i = 0; i < chosenSong.length; i++) {
-      correct.setAttribute('id', 'my-word');
-      guess = document.createElement('li');
-      guess.setAttribute('class', 'guess');
-      if (word[i] === "-") {
-        guess.innerHTML = "-";
-        space = 1;
-      } else {
-        guess.innerHTML = "_";
-      }
-  }
 }
 
 }
